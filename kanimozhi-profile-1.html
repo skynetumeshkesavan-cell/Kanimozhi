@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanimozhi – Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:    #0a0a0a;
+    --charcoal: #111115;
+    --surface:  #17171d;
+    --surface2: #1e1e27;
+    --border:   #2a2a35;
+    --blush:    #d4587a;
+    --rose:     #e8a0b4;
+    --lavender: #b89ecf;
+    --gold:     #c9a96e;
+    --mint:     #7ec8b4;
+    --white:    #f0eef6;
+    --muted:    #8a8899;
+  }
+
+  body {
+    background: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(212,88,122,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(184,158,207,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(201,169,110,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 580px;
+    background: var(--charcoal);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 3rem 2.5rem 2.2rem;
+    background: linear-gradient(160deg, #1a0f18 0%, #0d0d14 100%);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .flower { position: absolute; border-radius: 50%; opacity: 0.18; }
+  .flower-1 { width:200px; height:200px; background: radial-gradient(circle, var(--blush), transparent 70%); top:-70px; right:-50px; }
+  .flower-2 { width:140px; height:140px; background: radial-gradient(circle, var(--lavender), transparent 70%); bottom:-40px; left:-40px; }
+  .flower-3 { width:90px;  height:90px;  background: radial-gradient(circle, var(--gold), transparent 70%); top:20px; left:70px; }
+  .flower-4 { width:60px;  height:60px;  background: radial-gradient(circle, var(--mint), transparent 70%); bottom:20px; right:120px; opacity:0.12; }
+
+  .petal-ring {
+    position: absolute; right: 2.2rem; top: 50%;
+    transform: translateY(-50%);
+    width: 100px; height: 100px; opacity: 0.25;
+  }
+  .petal-ring svg { width: 100%; height: 100%; animation: spin 20s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hero-inner { position: relative; z-index: 1; }
+
+  .name-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(212,88,122,0.12); border: 1px solid rgba(212,88,122,0.3);
+    border-radius: 999px; padding: 0.28rem 0.9rem;
+    font-size: 0.7rem; color: var(--rose);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.1rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 8vw, 3.1rem);
+    font-weight: 700; line-height: 1.05;
+    color: var(--white); margin-bottom: 0.35rem;
+  }
+  h1 em { font-style: italic; color: var(--rose); }
+
+  .tagline { font-size: 0.83rem; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 1.5rem; }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.3rem 0.8rem; border-radius: 999px;
+    font-size: 0.74rem; font-weight: 500; letter-spacing: 0.03em;
+  }
+  .badge-rose     { background: rgba(212,88,122,0.15); color: var(--rose);     border: 1px solid rgba(212,88,122,0.25); }
+  .badge-lavender { background: rgba(184,158,207,0.12); color: var(--lavender); border: 1px solid rgba(184,158,207,0.2); }
+  .badge-gold     { background: rgba(201,169,110,0.12); color: var(--gold);     border: 1px solid rgba(201,169,110,0.2); }
+  .badge-mint     { background: rgba(126,200,180,0.12); color: var(--mint);     border: 1px solid rgba(126,200,180,0.2); }
+
+  /* ── BODY ── */
+  .body { padding: 2.2rem 2.5rem; }
+
+  .section { margin-bottom: 2.2rem; }
+  .section-label {
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--muted); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Info grid */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .info-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 0.9rem 1.1rem;
+    transition: border-color 0.2s;
+  }
+  .info-item:hover { border-color: rgba(212,88,122,0.35); }
+  .info-item.full { grid-column: 1 / -1; }
+  .info-label { font-size: 0.63rem; color: var(--muted); letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 0.28rem; }
+  .info-value { font-size: 0.92rem; color: var(--white); font-weight: 500; }
+
+  /* Quote / intro block */
+  .quote-block {
+    background: linear-gradient(135deg, rgba(212,88,122,0.08), rgba(184,158,207,0.06));
+    border: 1px solid rgba(212,88,122,0.2);
+    border-left: 3px solid var(--blush);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 2rem;
+    font-size: 0.88rem;
+    color: var(--rose);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* Timeline / education */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: flex; gap: 1rem;
+    padding-bottom: 1.4rem;
+    position: relative;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-left { display: flex; flex-direction: column; align-items: center; width: 32px; flex-shrink: 0; }
+  .tl-dot {
+    width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0;
+    margin-top: 3px;
+    box-shadow: 0 0 10px currentColor;
+  }
+  .tl-dot.rose     { background: var(--rose);     color: rgba(212,88,122,0.6); }
+  .tl-dot.lavender { background: var(--lavender); color: rgba(184,158,207,0.6); }
+  .tl-dot.gold     { background: var(--gold);     color: rgba(201,169,110,0.6); }
+  .tl-line {
+    width: 1px; flex: 1; margin-top: 6px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+  }
+  .tl-item:last-child .tl-line { display: none; }
+  .tl-content {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.1rem;
+  }
+  .tl-year { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .tl-title { font-size: 0.92rem; color: var(--white); font-weight: 600; margin-bottom: 0.18rem; }
+  .tl-sub { font-size: 0.75rem; color: var(--muted); }
+  .tl-badge {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 0.5rem; padding: 0.2rem 0.6rem;
+    background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 999px; font-size: 0.68rem; color: var(--gold);
+  }
+
+  /* Awards */
+  .award-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .award-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+    transition: border-color 0.2s;
+  }
+  .award-card:hover { border-color: rgba(201,169,110,0.4); }
+  .award-card.full { grid-column: 1 / -1; flex-direction: row; align-items: center; }
+  .award-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .gold-bg     { background: rgba(201,169,110,0.15); }
+  .rose-bg     { background: rgba(212,88,122,0.15); }
+  .lavender-bg { background: rgba(184,158,207,0.15); }
+  .award-title { font-size: 0.86rem; color: var(--white); font-weight: 600; }
+  .award-sub   { font-size: 0.72rem; color: var(--muted); line-height: 1.4; }
+
+  /* Skills / interests */
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .skill-tag {
+    padding: 0.35rem 0.85rem; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 500;
+    background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--blush); color: var(--rose); }
+
+  /* Stat row */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem; margin-bottom: 2.2rem;
+  }
+  .stat-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.1rem 0.8rem; text-align: center;
+  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--white); font-weight: 700; line-height: 1; }
+  .stat-num span { font-size: 1rem; color: var(--muted); }
+  .stat-label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.3rem; }
+
+  /* Dream section */
+  .dream-block {
+    background: linear-gradient(135deg, #1a1025, #0f1520);
+    border: 1px solid rgba(126,200,180,0.2);
+    border-radius: 14px; padding: 1.4rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .dream-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .dream-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--mint); margin-bottom: 0.3rem; }
+  .dream-text { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* Footer */
+  .card-footer {
+    padding: 1.3rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,10,0.5);
+  }
+  .footer-sig { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--blush); }
+  .footer-emojis { font-size: 1.15rem; letter-spacing: 0.25rem; }
+
+  /* Divider */
+  .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+
+  @media (max-width: 480px) {
+    .card { border-radius: 16px; }
+    .hero, .body { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .card-footer { padding-left: 1.4rem; padding-right: 1.4rem; }
+    .divider { margin: 0 1.4rem; }
+    .info-grid, .award-grid { grid-template-columns: 1fr; }
+    .award-card.full { flex-direction: column; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="flower flower-1"></div>
+    <div class="flower flower-2"></div>
+    <div class="flower flower-3"></div>
+    <div class="flower flower-4"></div>
+    <div class="petal-ring">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#d4587a" stroke-width="1.2">
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(0 50 50)"/>
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(30 50 50)"/>
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(60 50 50)"/>
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(90 50 50)"/>
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(120 50 50)"/>
+          <ellipse cx="50" cy="50" rx="20" ry="9" transform="rotate(150 50 50)"/>
+          <circle cx="50" cy="50" r="5" fill="#d4587a" opacity="0.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <div class="name-tag">🌸 Personal Profile</div>
+      <h1>Kanimozhi<em>.M</em></h1>
+      <p class="tagline">BSc Computer Science · Future IT Professional · Erode</p>
+      <div class="badges">
+        <span class="badge badge-rose">🌺 Gardening</span>
+        <span class="badge badge-gold">🧘 Yoga Award</span>
+        <span class="badge badge-lavender">🖥️ IT Aspirant</span>
+        <span class="badge badge-mint">🥇 1st Prize Winner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BODY ── -->
+  <div class="body">
+
+    <!-- Intro quote -->
+    <div class="quote-block">
+      "Growing towards the sun — one flower at a time, one line of code at a time." 🌸
+    </div>
+
+    <!-- Key stats -->
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">536<span>/600</span></div>
+        <div class="stat-label">12th Marks</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2<span>nd</span></div>
+        <div class="stat-label">School Rank</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2<span>+</span></div>
+        <div class="stat-label">Awards Won</div>
+      </div>
+    </div>
+
+    <!-- Personal Info -->
+    <div class="section">
+      <div class="section-label">Personal Info</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">Full Name</div>
+          <div class="info-value">Kanimozhi .M</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Date of Birth</div>
+          <div class="info-value">30 September 2009</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Father's Name</div>
+          <div class="info-value">Manimaran .R</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Mother's Name</div>
+          <div class="info-value">Sathya .M</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Favourite Colour</div>
+          <div class="info-value">⬛ Black</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Hobby</div>
+          <div class="info-value">🌿 Gardening</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Timeline -->
+    <div class="section">
+      <div class="section-label">Education Journey</div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot rose"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-year">Present · Ongoing</div>
+            <div class="tl-title">BSc Computer Science</div>
+            <div class="tl-sub">RD National College, Erode</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left">
+            <div class="tl-dot lavender"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-content">
+            <div class="tl-year">Higher Secondary · 12th Std</div>
+            <div class="tl-title">Govt. Girls Higher Secondary School</div>
+            <div class="tl-sub">Chithode, Erode</div>
+            <div class="tl-badge">🥈 School 2nd Rank · 536 / 600</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Awards & Achievements -->
+    <div class="section">
+      <div class="section-label">Awards & Achievements</div>
+      <div class="award-grid">
+        <div class="award-card">
+          <div class="award-icon gold-bg">🧘</div>
+          <div>
+            <div class="award-title">Yoga Award</div>
+            <div class="award-sub">Excellence in yoga practice & discipline</div>
+          </div>
+        </div>
+        <div class="award-card">
+          <div class="award-icon rose-bg">🥇</div>
+          <div>
+            <div class="award-title">1st Prize</div>
+            <div class="award-sub">Nandha Vignayani · Flower Theme 🌺</div>
+          </div>
+        </div>
+        <div class="award-card full">
+          <div class="award-icon lavender-bg">🌸</div>
+          <div>
+            <div class="award-title">Theme Back — Flower Theme</div>
+            <div class="award-sub">Creative floral theme presentation winner at Nandha Vignayani event</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills & Interests -->
+    <div class="section">
+      <div class="section-label">Skills & Interests</div>
+      <div class="skills-wrap">
+        <span class="skill-tag">🌺 Flower Gardening</span>
+        <span class="skill-tag">🖥️ Computer Science</span>
+        <span class="skill-tag">🧘 Yoga</span>
+        <span class="skill-tag">🎨 Creative Themes</span>
+        <span class="skill-tag">📚 Academic Excellence</span>
+        <span class="skill-tag">⬛ Black Aesthetic</span>
+        <span class="skill-tag">💻 IT & Technology</span>
+        <span class="skill-tag">🌿 Nature Lover</span>
+      </div>
+    </div>
+
+    <!-- Dream / Aim -->
+    <div class="section">
+      <div class="section-label">Future Aim</div>
+      <div class="dream-block">
+        <div class="dream-icon">💻</div>
+        <div>
+          <div class="dream-title">Aspiring IT Professional</div>
+          <div class="dream-text">
+            Kanimozhi dreams of becoming a successful IT employee, combining her passion for computers with her dedication and hard work. From scoring 536/600 in 12th grade to pursuing BSc Computer Science — she is steadily growing towards her goal, one step at a time. 🌸
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="card-footer">
+    <span class="footer-sig">Kanimozhi 💗</span>
+    <span class="footer-emojis">🕊️🌸✨</span>
+  </div>
+
+</div>
+
+</body>
+</html>
